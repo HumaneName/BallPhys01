@@ -13,9 +13,16 @@ main :: proc() {
 Window :: proc(Width : i32, Height : i32, Title : cstring) {
 
     rl.InitWindow(Width,Height,Title)
+
+    if !IsWindowReady() {
+        rl.EndDrawing()
+        fmt.println("Window failed to initialize!")
+        return
+    } 
+    
     defer rl.CloseWindow()
     for !rl.WindowShouldClose() {
-        defer rl.EndDrawing
+        defer rl.EndDrawing()
         rl.BeginDrawing()
 
         Render()
