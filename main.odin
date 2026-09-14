@@ -25,6 +25,7 @@ Window :: proc(Width : i32, Height : i32, Title : cstring) {
         defer rl.EndDrawing()
         rl.BeginDrawing()
 
+        G.game()
         Render()
     }
 }
