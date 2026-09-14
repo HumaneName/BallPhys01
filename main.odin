@@ -17,14 +17,14 @@ Window :: proc(Width : i32, Height : i32, Title : cstring) {
 */
     rl.InitWindow(Width,Height,Title)
 
-    if !IsWindowReady() {
+    if !IsWindowReady() { // Checks if the window actually opens.
         rl.EndDrawing()
         fmt.println("Window failed to initialize!")
         return
     } 
     
-    defer rl.CloseWindow()
-    for !rl.WindowShouldClose() {
+    defer rl.CloseWindow() // After the window is told to close, it closes
+    for !rl.WindowShouldClose() { // Until the window should close, run the following:
         defer rl.EndDrawing()
         rl.BeginDrawing()
 
