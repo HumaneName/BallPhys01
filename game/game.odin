@@ -3,4 +3,9 @@ package game
 import fmt "core:fmt"
 import rl  "vendor:raylib"
 
-game :: proc() {}
+Globals :: struct {gravity: int, friction: f16}
+globals: Globals
+
+game :: proc() {
+    ball()
+}
