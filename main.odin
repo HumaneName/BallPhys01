@@ -16,6 +16,7 @@ Window :: proc(Width : i32, Height : i32, Title : cstring) {
    Width and Height (Pixels)
    Title            (String)
 */
+    rl.SetTargetFPS(60)
     rl.InitWindow(Width,Height,Title)
 
     defer rl.CloseWindow() // After the window is told to close, it closes
