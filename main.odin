@@ -20,15 +20,15 @@ Window :: proc(Width : i32, Height : i32, Title : cstring) {
 
     defer rl.CloseWindow() // After the window is told to close, it closes
     for !rl.WindowShouldClose() { // Until the window should close, run the following:
-        defer rl.EndDrawing()
-        rl.BeginDrawing()
-        G.game()
-        Render()
+        defer rl.EndDrawing()     // After the following, stop drawing
+        rl.BeginDrawing()         // Begins drawing
+        G.game()                  // Calls for the function Game in game/game.odin
+        Render()                  // Specific render calls
     }
 }
 
 Render :: proc() {
 
-    rl.ClearBackground(rl.DARKBLUE)
+    rl.ClearBackground(rl.DARKBLUE) // Lalala the window is blue now
 
 }
