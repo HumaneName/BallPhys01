@@ -6,10 +6,8 @@ import rl  "vendor:raylib"
 
 
 init :: proc() {
-    stats.position = {0, 0}
-    stats.velocity = {15, 15}
-    stats.mass     = 1
-    stats.radius   = 5
+    stats = {position = {0,0}, velocity = {15,15}, mass = 1, radius = 5.0}
+    Boundary = {WindowSize}
 
     fmt.println("ball.odin ran")
 }
@@ -17,12 +15,12 @@ init :: proc() {
 Stats :: struct {
     position : struct {x, y: int},
     velocity : struct {x, y: int},
-    mass     : int
-    radius   : int
+    mass     : int,
+    radius   : f32,
 }
 
 stats: Stats
-
+boundary: Boundary
 
 
 ball :: proc() {
@@ -43,8 +41,11 @@ physics :: proc() {
 
 }
 
-Boundary :: struct 
+Boundary :: struct  {x,y: i32}
 
 collision :: proc() {
-    
+    if (stats.position.y > Boundary.y) {
+        stats.position.y = Boundary.y
+        stats.velocity.y *= -1
+    }
 }
