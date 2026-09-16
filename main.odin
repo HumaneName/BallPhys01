@@ -4,11 +4,14 @@ import fmt "core:fmt"        // Imports the FMT library (I think I know what thi
 import rl  "vendor:raylib"   // Imports RayLib library
 import G   "game"            // Imports game/game.odin
 
+WindowSize :: struct {x,y : i32}
+
 main :: proc() {
+    WindowSize = {800,600}
     fmt.println("Hello, World!") // Hiiiii :D
     G.init()
 
-    Window(800,600,"RayLib window") // Initializes a window with by default 800px by 600px with a title "RayLib Window."
+    Window(WindowSize,"RayLib window") // Initializes a window with by default 800px by 600px with a title "RayLib Window."
 }
 
 Window :: proc(Width : i32, Height : i32, Title : cstring) {  
@@ -19,7 +22,7 @@ Window :: proc(Width : i32, Height : i32, Title : cstring) {
     rl.SetTargetFPS(60)
     rl.InitWindow(Width,Height,Title)
 
-    defer rl.CloseWindow() // After the window is told to close, it closes
+    defer rl.CloseWindow()        // After the window is told to close, it closes
     for !rl.WindowShouldClose() { // Until the window should close, run the following:
         defer rl.EndDrawing()     // After the following, stop drawing
         rl.BeginDrawing()         // Begins drawing
